@@ -29,6 +29,10 @@ class MyHomePage extends StatelessWidget {
             onPressed: ()=>{}
           ),
         ],  
+        leading:  IconButton( //icono en la izquierda
+            icon: Icon(Icons.remove),
+            onPressed: ()=>{}
+          ),
         elevation: 10, //sombra
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10))
