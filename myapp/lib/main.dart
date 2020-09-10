@@ -1,44 +1,43 @@
 import 'package:flutter/material.dart';
-
+ 
 void main() => runApp(MyApp());
-
+ 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
       debugShowCheckedModeBanner: false,
-      home: MyHomePage()
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Scaffold"),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: ()=>{}
-          ),
-          IconButton(
-            icon: Icon(Icons.remove),
-            onPressed: ()=>{}
-          ),
-        ],  
-        leading:  IconButton( //icono en la izquierda
-            icon: Icon(Icons.arrow_back_ios),
-            onPressed: ()=>{}
-          ),
-        elevation: 10, //sombra
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10))
-          ),
+      title: 'ListView',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('ListView'),
+        ),
+        body:  ListView(
+          children: [
+            Card(
+              child: Image.network("https://thispersondoesnotexist.com/image"),
+            ),
+            Card(
+              child: Image.network("https://thispersondoesnotexist.com/image"),
+            ),
+            Card(
+              child: Image.network("https://thispersondoesnotexist.com/image"),
+            ),
+            Card(
+              child: Image.network("https://thispersondoesnotexist.com/image"),
+            ),
+            Card(
+              child: Image.network("https://thispersondoesnotexist.com/image"),
+            ),
+            Card(
+              child: Image.network("https://thispersondoesnotexist.com/image"),
+            ),
+            Card(
+              child: Image.network("https://thispersondoesnotexist.com/image"),
+            ),
+          ],
+        )
       ),
-      body: Center(),
     );
   }
 }
