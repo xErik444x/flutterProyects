@@ -8,36 +8,29 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ListView',
-      home: Scaffold(
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  MyHomePage({Key key}) : super(key: key);
+List<String> names = ["hola","jose","erik","cosas","palabras"];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
         appBar: AppBar(
           title: Text('ListView'),
         ),
-        body:  ListView(
-          children: [
-            Card(
-              child: Image.network("https://thispersondoesnotexist.com/image"),
-            ),
-            Card(
-              child: Image.network("https://thispersondoesnotexist.com/image"),
-            ),
-            Card(
-              child: Image.network("https://thispersondoesnotexist.com/image"),
-            ),
-            Card(
-              child: Image.network("https://thispersondoesnotexist.com/image"),
-            ),
-            Card(
-              child: Image.network("https://thispersondoesnotexist.com/image"),
-            ),
-            Card(
-              child: Image.network("https://thispersondoesnotexist.com/image"),
-            ),
-            Card(
-              child: Image.network("https://thispersondoesnotexist.com/image"),
-            ),
-          ],
-        )
-      ),
-    );
+        body:  ListView.builder( //apunta a una lista
+          itemCount: names.length,
+          itemBuilder: (BuildContext context, int index){
+            return Card(
+              child: Text(names[index]),
+            );
+          }
+          )
+      );
   }
 }
