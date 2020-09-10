@@ -24,11 +24,9 @@ List<String> names = ["hola","jose","erik","cosas","palabras","jose","erik","cos
           title: Text('ListView'),
         ),
         body:  ListView.builder( //apunta a una lista
-          itemCount: names.length,
+          itemCount: 30,
           itemBuilder: (BuildContext context, int index){
-            return ListTile(title: Text(names[index]),
-            leading: Icon(Icons.person),
-            onTap: ()=>{print(names[index])},);
+           return Image.network("https://picsum.photos/id/$index/400/400",fit: BoxFit.cover,);
           }
           )
       );
