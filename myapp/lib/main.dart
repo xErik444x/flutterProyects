@@ -21,9 +21,12 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         child: IconButton(
           icon:  Icon(
-            Icons.add_to_home_screen,size: 30,color: Colors.blue,
+            Icons.close,
+            color: Colors.blue,
             ),
-         onPressed: ()=>{}
+          iconSize: 200,
+         onPressed: ()=>{print("hola")
+         }
          )
       ),
     );
