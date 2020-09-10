@@ -19,21 +19,14 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Scaffold"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.close),
+            onPressed: ()=>{}
+          )
+        ],  
       ),
       body: Center(),
-      backgroundColor: Colors.deepOrangeAccent,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.close),
-        onPressed: ()=>{print("cerrar")},
-      ),
-      drawer: Drawer(
-        child: Center(
-          child: Text("Drawer Izquierdo"),
-        ),
-      ),
-      endDrawer: Drawer(child: Center(
-          child: Text("Drawer Derecho"),
-        ),),
     );
   }
 }
