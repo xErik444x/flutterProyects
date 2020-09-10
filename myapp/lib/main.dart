@@ -19,12 +19,11 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: Text("Hello World",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold
-          ),
-        ),
+        child: Image.network(
+          "https://i.pinimg.com/originals/86/5a/10/865a10d3e6fe8c9c1d10b9f6e6074df8.jpg"
+          , height: 300,
+          fit: BoxFit.cover,
+          )
       ),
     );
   }
