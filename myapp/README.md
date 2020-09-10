@@ -15,3 +15,13 @@
 > Para mostrarlos :
 
         Image.asset("assets/img/pinguino1.jpg", fit: BoxFit.cover)
+
+# ¿Cuando usar un statless y un statefull ?
+> el stateless es para cuando no vamos a estar cambiando cosas dinamicamente (un texto o cosas del estilo)
+
+> el statefull es para cuando vamos a hacer cambios en tiempo real, como una calculadora.
+
+
+# Gestos
+
+> El Inkwell() genera el efecto de touch mientras que el GestureDetector no lo hace.

@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'ListView',
+      title: 'Gesture Detector',
       home: MyHomePage(),
     );
   }
@@ -18,21 +18,34 @@ class MyHomePage extends StatelessWidget {
   MyHomePage({
     Key key
   }): super(key: key);
-  List < String > names = ["hola", "jose", "erik", "cosas", "palabras", "jose", "erik", "cosas", "palabras", "jose", "erik", "cosas", "palabras", "jose", "erik", "cosas", "palabras", "jose", "erik", "cosas", "palabras"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ListView'),
+        title: Text('Gesture Detector'),
       ),
-      body: ListView(
-        children: [
-          Image.asset("assets/img/pinguino1.jpg", fit: BoxFit.cover),
-          Image.asset("assets/img/pinguino2.jpg", fit: BoxFit.cover),
-          Image.asset("assets/img/pinguino3.jpg", fit: BoxFit.cover)
-        ],
+      body: Center(
+        child: Column(
+          children: [
+            InkWell(
+               onTap: _onTap,
+              child:Text("hola",style: TextStyle(fontSize: 30),) ,
+            ),
+            GestureDetector(
+              onLongPress: ()=>{print("mantenido")},
+              onTap: _onTap,
+              child:Text("hola",style: TextStyle(fontSize: 30),) ,
+            ),
+            
+
+          ],
+        ),
       )
     );
+  }
+
+  void _onTap() {
+    print("hola");
   }
 }
