@@ -21,10 +21,18 @@ class MyHomePage extends StatelessWidget {
         title: Text("Scaffold"),
         actions: [
           IconButton(
-            icon: Icon(Icons.close),
+            icon: Icon(Icons.add),
             onPressed: ()=>{}
-          )
+          ),
+          IconButton(
+            icon: Icon(Icons.remove),
+            onPressed: ()=>{}
+          ),
         ],  
+        elevation: 10, //sombra
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10))
+          ),
       ),
       body: Center(),
     );
