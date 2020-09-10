@@ -12,3 +12,6 @@
 
         assets:
         - assets/img/pinguino.jpg
+> Para mostrarlos :
+
+        Image.asset("assets/img/pinguino1.jpg", fit: BoxFit.cover)
