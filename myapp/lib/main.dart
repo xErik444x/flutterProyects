@@ -19,7 +19,12 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: Icon(Icons.add_to_home_screen,size: 400,color: Colors.blue,)
+        child: IconButton(
+          icon:  Icon(
+            Icons.add_to_home_screen,size: 30,color: Colors.blue,
+            ),
+         onPressed: ()=>{}
+         )
       ),
     );
   }
