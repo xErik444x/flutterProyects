@@ -4,3 +4,5 @@
     flutter emulators --launch Pixel_XL_API_27
 ## crear proyecto
     flutter create nombre
+## crear branch
+    git checkout name 

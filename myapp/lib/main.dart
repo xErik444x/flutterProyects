@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Gesture Detector',
+      title: 'Botones',
       home: MyHomePage(),
     );
   }
@@ -23,29 +23,24 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Gesture Detector'),
+        title: Text('Botones'),
       ),
       body: Center(
         child: Column(
           children: [
-            InkWell(
-               onTap: _onTap,
-              child:Text("hola",style: TextStyle(fontSize: 30),) ,
-            ),
-            GestureDetector(
-              onLongPress: ()=>{print("mantenido")},
-              onTap: _onTap,
-              child:Text("hola",style: TextStyle(fontSize: 30),) ,
-            ),
-            
-
+           FlatButton(
+             onPressed: ()=>{},
+              child: Text("Soy un boton plano",style: TextStyle(fontSize: 20),),
+              textColor:Colors.white,
+              color: Colors.blueAccent,
+              ),
+            RaisedButton(onPressed: (){},child: Text("Soy un raisedButton",style: TextStyle(fontSize: 20)),),
+            IconButton(icon: Icon(Icons.access_time), onPressed: (){}),
+            OutlineButton(onPressed: (){},child: Text("Soy un outline",style: TextStyle(fontSize: 20)))
           ],
         ),
       )
     );
   }
 
-  void _onTap() {
-    print("hola");
-  }
 }
