@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key key}) : super(key: key);
-List<String> names = ["hola","jose","erik","cosas","palabras"];
+List<String> names = ["hola","jose","erik","cosas","palabras","jose","erik","cosas","palabras","jose","erik","cosas","palabras","jose","erik","cosas","palabras","jose","erik","cosas","palabras"];
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,9 @@ List<String> names = ["hola","jose","erik","cosas","palabras"];
         body:  ListView.builder( //apunta a una lista
           itemCount: names.length,
           itemBuilder: (BuildContext context, int index){
-            return Card(
-              child: Text(names[index]),
-            );
+            return ListTile(title: Text(names[index]),
+            leading: Icon(Icons.person),
+            onTap: ()=>{print(names[index])},);
           }
           )
       );
