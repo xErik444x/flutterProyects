@@ -30,7 +30,7 @@ class MyHomePage extends StatelessWidget {
           ),
         ],  
         leading:  IconButton( //icono en la izquierda
-            icon: Icon(Icons.remove),
+            icon: Icon(Icons.arrow_back_ios),
             onPressed: ()=>{}
           ),
         elevation: 10, //sombra
