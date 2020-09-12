@@ -109,27 +109,31 @@ class _HomePageState extends State<HomePage> {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
           children: [
-            SimpleDialogOption(
-              child: TextField(
-                  controller: textoInput,
-                  autofocus: true,
-                  decoration: InputDecoration(
-                    labelText: "Texto",
-                    icon: Icon(Icons.add),
-                  ),
-                  onSubmitted: (text) {
-                    if (text.isEmpty) {
-                      return null;
-                    }
-                    setState(() {
-                      text.isEmpty ? _validate = "Error." : _validate = "";
-                      var task = Task(text, false);
-                      // tareas.add(text);
-                      db.insert(task);
-                      textoInput.clear();
-                      Navigator.pop(context); //elimina el dialog
-                    });
-                  }),
+            Container(
+              width: 500,
+              child: SimpleDialogOption(
+                child: TextField(
+                    controller: textoInput,
+                    autofocus: true,
+                    style: TextStyle(fontSize: 30),
+                    decoration: InputDecoration(
+                      labelText: "Texto",
+                      icon: Icon(Icons.add),
+                    ),
+                    onSubmitted: (text) {
+                      if (text.isEmpty) {
+                        return null;
+                      }
+                      setState(() {
+                        text.isEmpty ? _validate = "Error." : _validate = "";
+                        var task = Task(text, false);
+                        // tareas.add(text);
+                        db.insert(task);
+                        textoInput.clear();
+                        Navigator.pop(context); //elimina el dialog
+                      });
+                    }),
+              ),
             ),
           ],
         );

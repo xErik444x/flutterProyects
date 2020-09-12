@@ -31,12 +31,13 @@ class _EditPageState extends State<EditPage> {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 200,
         title: Text("EDIT TASK",
             style: TextStyle(
                 fontWeight: FontWeight.w300,
-                color: Colors.green[300],
-                fontSize: 40,)),
+                 color: Colors.green[300],
+                 fontSize: 40
+                 )),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -62,67 +63,31 @@ class _EditPageState extends State<EditPage> {
         ),
       ),
       body: Center(
-        child: ListView(
-          //mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 130,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
+            TextField(
                 style: TextStyle(fontSize: 20),
-                keyboardType: TextInputType.multiline,
                 controller: _controller,
-                minLines: 1,
-                maxLines: 20,
                 //autofocus: true,
                 decoration: InputDecoration(
                   labelText: "texto",
-                  //icon: Icon(Icons.add),
+                  icon: Icon(Icons.add),
                 ),
-                // onSubmitted: (text) async {
-                //   if (text.isEmpty) {
-                //     return null;
-                //   } else {
-                //     Task task = new Task(text, arguments.task.completed);
-                //     task.id = arguments.id;
-                //     await db.updateTask(task);
-                //     print(task.id);
-                //     Navigator.pop(context);
-                //   }
-                //}
-              ),
-            ),
+                onSubmitted: (text) async {
+                  if (text.isEmpty) {
+                    return null;
+                  } else {
+                    Task task = new Task(text, arguments.task.completed);
+                    task.id = arguments.id;
+                    await db.updateTask(task);
+                    print(task.id);
+                    Navigator.pop(context);
+                  }
+                }),
             SizedBox(
-              height: 10,
+              height: 70,
             ),
-            Container(
-              padding: EdgeInsets.fromLTRB(50, 0, 50,0),
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0),
-                )),
-                  onPressed: () async {
-                    var text = _controller.text;
-                    var singleline = text.replaceAll("\n", "");
-                    if(singleline.isNotEmpty){
-                     Task task = new Task(text, arguments.task.completed);
-                      task.id = arguments.id;
-                      await db.updateTask(task);
-                      print(task.id);
-                      Navigator.pop(context);
-                    }
-                  },
-                  child: Icon(
-                    Icons.edit,
-                    color: Colors.white,
-                    size: 60,
-                   
-                  ),
-                  color:Colors.green[300],
-                  ),
-            )
           ],
         ),
       ),
