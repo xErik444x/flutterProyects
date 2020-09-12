@@ -9,10 +9,22 @@ class EditPage extends StatefulWidget {
 }
 
 class _EditPageState extends State<EditPage> {
-
- @override
+  @override
   Widget build(BuildContext context) {
     EditPageArguments arguments = ModalRoute.of(context).settings.arguments;
+    TextEditingController _controller = new TextEditingController()..text =arguments.task.name;
+
+    @override
+    void initState() {
+      super.initState();
+      _controller = new TextEditingController()..text =arguments.task.name ;
+    }
+
+    @override
+    dispose() {
+      super.dispose();
+      _controller.dispose();
+    }
 
     DatabaseMain db = arguments.db;
 
@@ -20,20 +32,39 @@ class _EditPageState extends State<EditPage> {
       appBar: AppBar(
         title: Text("Segunda pantalla"),
       ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          height: 80,
+          child: FittedBox(
+                    child: FloatingActionButton(
+                child: Icon(Icons.delete,color: Colors.white,),
+                backgroundColor: Colors.red[400],
+                      onPressed: () async {
+                        Task task = new Task("", false);
+                        task.id = arguments.id;
+                        await db.deleteTask(task);
+                        Navigator.pop(context);
+                      }),
+          ),
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
+              style: TextStyle(fontSize: 30),
+              controller:_controller,
                 autofocus: true,
                 decoration: InputDecoration(
-                  labelText: arguments.task.name,
+                  labelText: "texto",
                   icon: Icon(Icons.add),
                 ),
                 onSubmitted: (text) async {
                   if (text.isEmpty) {
                     return null;
-                  }else{
+                  } else {
                     Task task = new Task(text, arguments.task.completed);
                     task.id = arguments.id;
                     await db.updateTask(task);
@@ -41,12 +72,8 @@ class _EditPageState extends State<EditPage> {
                     Navigator.pop(context);
                   }
                 }),
-            IconButton(icon: Icon(Icons.delete), onPressed: () async {
-              Task task = new Task("",false);
-              task.id = arguments.id;
-              await db.deleteTask(task);
-                Navigator.pop(context);
-               })
+                SizedBox(height: 70,),
+
           ],
         ),
       ),
@@ -59,5 +86,5 @@ class EditPageArguments {
   Task task;
   int id;
 
-  EditPageArguments({this.task,this.id, this.db});
+  EditPageArguments({this.task, this.id, this.db});
 }
