@@ -161,9 +161,6 @@ class _HomePageState extends State<HomePage> {
                           await db.updateTask(task);
                           setState(() {});
                         },
-                        // leading: Icon(task.completed
-                        //     ? Icons.check_box
-                        //     : Icons.check_box_outline_blank,color: Colors.green[300]),
                         trailing: IconButton(
                             icon: Icon(Icons.edit,color: Colors.green[300],size: 30,),
                             onPressed: () async {
