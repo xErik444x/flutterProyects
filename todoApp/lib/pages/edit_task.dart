@@ -27,20 +27,26 @@ class _EditPageState extends State<EditPage> {
             TextField(
                 autofocus: true,
                 decoration: InputDecoration(
-                  labelText: arguments.text,
+                  labelText: arguments.task.name,
                   icon: Icon(Icons.add),
                 ),
                 onSubmitted: (text) async {
                   if (text.isEmpty) {
                     return null;
                   }else{
-                    Task task = new Task(text, arguments.completada);
+                    Task task = new Task(text, arguments.task.completed);
                     task.id = arguments.id;
                     await db.updateTask(task);
                     print(task.id);
                     Navigator.pop(context);
                   }
                 }),
+            IconButton(icon: Icon(Icons.delete), onPressed: () async {
+              Task task = new Task("",false);
+              task.id = arguments.id;
+              await db.deleteTask(task);
+                Navigator.pop(context);
+               })
           ],
         ),
       ),
@@ -50,8 +56,8 @@ class _EditPageState extends State<EditPage> {
 
 class EditPageArguments {
   DatabaseMain db;
+  Task task;
   int id;
-  String text;
-  bool completada;
-  EditPageArguments({this.id, this.text,this.completada, this.db});
+
+  EditPageArguments({this.task,this.id, this.db});
 }

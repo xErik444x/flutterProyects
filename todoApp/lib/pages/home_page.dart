@@ -144,8 +144,12 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.data == null) {
               print(snapshot.data);
-              return Center(
-                child: Text("no hay tareas."),
+              return Column(
+                children: [
+                  Center(
+                    child: Text("no hay tareas."),
+                  ),
+                ],
               );
             } else {
               print(snapshot.data);
@@ -165,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                             icon: Icon(Icons.edit,color: Colors.green[300],size: 30,),
                             onPressed: () async {
                               // await db.deleteTask(task);
-                             await Navigator.pushNamed(context,"/edit",arguments:EditPageArguments(id:task.id,text:task.name,completada:task.completed,db:db));
+                             await Navigator.pushNamed(context,"/edit",arguments:EditPageArguments(id:task.id,task:task,db:db));
                               setState(() {});
                             }),
                       ),
@@ -174,9 +178,7 @@ class _HomePageState extends State<HomePage> {
               );
             }
           } else {
-            return Center(
-              child: Text("no hay tareas."),
-            );
+            return Text("no hay tareas.");
           }
         });
   }
